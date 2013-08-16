@@ -16,7 +16,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-directory "/var/core" do
+directory "#{node['coreadm']['path']" do
   action :create
 end
 

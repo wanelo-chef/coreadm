@@ -9,5 +9,6 @@
 # %z Name of the zone in which process executed (zonename)
 # %% Literal %
 
+default['coreadm']['path'] = "/var/core"
 default['coreadm']['global_pattern'] = "coreadm -g /var/core/core.%f.%p.%t"
 default['coreadm']['init_pattern'] = "coreadm -i /var/core/core.%f.%p.%t"
