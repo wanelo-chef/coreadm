@@ -1,6 +1,6 @@
 coreadm Cookbook
 ================
-TODO: Enter the cookbook description here.
+Sets coreadm defaults.  Defaults set in attributes.rb assume that you're running a typical SmartOS system in the Joyent public cloud.
 
 License and Authors
 -------------------
