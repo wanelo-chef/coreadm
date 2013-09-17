@@ -22,10 +22,10 @@ end
 
 execute "Configure global coreadm settings" do
   command "#{node['coreadm']['global_pattern']}"
-  not_if "coreadm | grep #{node['coreadm']['global_pattern']}"
+  not_if "coreadm | grep global | grep #{node['coreadm']['name_pattern']} && coreadm | grep #{node['coreadm']['path']}"
 end
 
 execute "configure coreadm settings for 'init' child processes" do
   command "#{node['coreadm']['init_pattern']}"
-  not_if "coreadm | grep #{node['coreadm']['init_pattern']}"
+  not_if "coreadm | grep init | grep #{node['coreadm']['name_pattern']} && coreadm | grep #{node['coreadm']['path']}"
 end

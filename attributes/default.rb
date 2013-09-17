@@ -10,5 +10,6 @@
 # %% Literal %
 
 default['coreadm']['path'] = "/var/core"
-default['coreadm']['global_pattern'] = "coreadm -g /var/core/core.%f.%p.%t"
-default['coreadm']['init_pattern'] = "coreadm -i /var/core/core.%f.%p.%t"
+default['coreadm']['name_pattern'] = "core.%f.%p.%t"
+default['coreadm']['global_pattern'] = "coreadm -g #{node['coreadm']['path']}/#{node['coreadm']['name_pattern']}"
+default['coreadm']['init_pattern'] = "coreadm -i #{node['coreadm']['path']}/#{node['coreadm']['name_pattern']}"
