@@ -1,0 +1,11 @@
+DEPENDENCIES
+  coreadm
+    path: .
+    metadata: true
+  test-setup
+    path: test/cookbooks/test-setup
+
+GRAPH
+  coreadm (0.1.1)
+  test-setup (0.0.1)
+    coreadm (>= 0.0.0)

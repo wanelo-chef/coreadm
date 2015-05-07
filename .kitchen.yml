@@ -1,0 +1,21 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+  require_chef_omnibus: true
+
+platforms:
+- name: smartos
+  driver_config:
+    box: livinginthepast/smartos-base64
+    box_url: https://atlas.hashicorp.com/livinginthepast/boxes/smartos-base64
+    vagrantfile_erb: test/templates/Vagrantfile.smartos.erb
+    zone:
+      name: base64
+      brand: joyent
+      image: 4166f6d6-ea5f-11e4-addd-8351b159d9b6
+
+suites:
+  - name: default
