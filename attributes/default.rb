@@ -9,7 +9,7 @@
 # %z Name of the zone in which process executed (zonename)
 # %% Literal %
 
-default['coreadm']['path'] = "/var/core"
-default['coreadm']['name_pattern'] = "core.%f.%p.%t"
-default['coreadm']['global_pattern'] = "coreadm -g #{node['coreadm']['path']}/#{node['coreadm']['name_pattern']}"
-default['coreadm']['init_pattern'] = "coreadm -i #{node['coreadm']['path']}/#{node['coreadm']['name_pattern']}"
+default['coreadm']['path'] = '/var/core'
+default['coreadm']['name_pattern'] = 'core.%f.%p.%t'
+default['coreadm']['global_pattern'] = 'coreadm -g <path>/<name>'
+default['coreadm']['init_pattern'] = 'coreadm -i <path>/<name>'

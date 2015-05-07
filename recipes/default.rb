@@ -20,12 +20,22 @@ directory "#{node['coreadm']['path']}" do
   action :create
 end
 
-execute "Configure global coreadm settings" do
-  command "#{node['coreadm']['global_pattern']}"
-  not_if "coreadm | grep global | grep #{node['coreadm']['name_pattern']} && coreadm | grep #{node['coreadm']['path']}"
+global_pattern = node['coreadm']['global_pattern']
+                 .sub('<path>', node['coreadm']['path'])
+                 .sub('<name>', node['coreadm']['name_pattern'])
+
+init_pattern = node['coreadm']['init_pattern']
+               .sub('<path>', node['coreadm']['path'])
+               .sub('<name>', node['coreadm']['name_pattern'])
+
+helper = Coreadm::Current.new
+
+execute 'Configure global coreadm settings' do
+  command global_pattern
+  not_if { helper.global_pattern == global_pattern }
 end
 
-execute "configure coreadm settings for 'init' child processes" do
-  command "#{node['coreadm']['init_pattern']}"
-  not_if "coreadm | grep init | grep #{node['coreadm']['name_pattern']} && coreadm | grep #{node['coreadm']['path']}"
+execute 'configure coreadm settings for init child processes' do
+  command init_pattern
+  not_if { helper.init_pattern == init_pattern }
 end
