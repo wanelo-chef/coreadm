@@ -1,3 +1,4 @@
+require 'chef'
 require 'chef/mixin/shell_out'
 
 module Coreadm
@@ -16,11 +17,11 @@ module Coreadm
       current_settings['global core file content']
     end
 
-    def init_pattern
+    def per_process_pattern
       current_settings['init core file pattern']
     end
 
-    def init_content
+    def per_process_content
       current_settings['init core file content']
     end
 
@@ -42,6 +43,15 @@ module Coreadm
 
     def global_cores_logged?
       current_settings['global core dump logging'] == 'enabled'
+    end
+
+    def enabled_cores
+      [].tap do |cores|
+        cores << :global if global_cores_enabled?
+        cores << :per_process if per_process_cores_enabled?
+        cores << :global_setid if global_setid_cores_enabled?
+        cores << :per_process_setid if per_process_setid_cores_enabled?
+      end
     end
 
     private

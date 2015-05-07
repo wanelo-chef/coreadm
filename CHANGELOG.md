@@ -3,11 +3,10 @@ coreadm CHANGELOG
 
 This file is used to list changes made in each version of the coreadm cookbook.
 
-0.1.0
------
-- [your_name] - Initial release of coreadm
+## 1.0.0
+- [sax] - Add `coreadm` provider
+- [sax] - **BREAKING CHANGE:** move `default` recipe into `auto` 
 
-- - -
-Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.
+## 0.1.0
+- [bixu] - Initial release of coreadm
 
-The [Github Flavored Markdown page](http://github.github.com/github-flavored-markdown/) describes the differences between markdown on github and standard markdown.

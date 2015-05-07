@@ -32,15 +32,15 @@ RSpec.describe Coreadm::Current do
     end
   end
 
-  describe '#init_pattern' do
+  describe '#per_process_pattern' do
     it 'matches content from coreadm' do
-      expect(current.init_pattern).to eq('/var/core/init/core.%f.%p')
+      expect(current.per_process_pattern).to eq('/var/core/init/core.%f.%p')
     end
   end
 
-  describe '#init_content' do
+  describe '#per_process_content' do
     it 'matches content from coreadm' do
-      expect(current.init_content).to eq('init content')
+      expect(current.per_process_content).to eq('init content')
     end
   end
 
@@ -71,6 +71,12 @@ RSpec.describe Coreadm::Current do
   describe '#global_cores_logged??' do
     it 'matches content from coreadm' do
       expect(current.global_cores_logged?).to be false
+    end
+  end
+
+  describe '#enabled_cores' do
+    it 'maps enabled cores to symbols' do
+      expect(current.enabled_cores).to match_array([:global, :per_process, :per_process_setid])
     end
   end
 end

@@ -16,6 +16,10 @@ platforms:
       name: base64
       brand: joyent
       image: 4166f6d6-ea5f-11e4-addd-8351b159d9b6
+  provisioner:
+    chef_omnibus_url: https://raw.github.com/wanelo-chef/chef-bootstrap/master/latest.sh
 
 suites:
   - name: default
+    run_list:
+      - recipe[test-setup::provider]
